@@ -207,6 +207,35 @@
                 });
             });
 
+            // Prevent video from pausing when switching tabs
+            document.addEventListener('visibilitychange', function() {
+                if (document.visibilityState === 'visible') {
+                    // When tab becomes visible again, ensure video is playing
+                    if (heroVideo.paused && heroVideo.readyState >= 2) {
+                        heroVideo.play().catch(function(error) {
+                            console.log('Resume play failed:', error);
+                        });
+                    }
+                } else {
+                    // When tab becomes hidden, keep video playing (don't pause)
+                    // This is the key - we're NOT pausing the video when tab is hidden
+                }
+            });
+
+            // Also handle when window loses/gains focus
+            window.addEventListener('blur', function() {
+                // Don't pause video when window loses focus
+            });
+
+            window.addEventListener('focus', function() {
+                // Ensure video is playing when window regains focus
+                if (heroVideo.paused && heroVideo.readyState >= 2) {
+                    heroVideo.play().catch(function(error) {
+                        console.log('Focus play failed:', error);
+                    });
+                }
+            });
+
             // Connection-based quality adjustment
             if ('connection' in navigator) {
                 const connection = navigator.connection;
