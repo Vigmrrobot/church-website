@@ -1,78 +1,351 @@
-<!-- Existing homepage remains as-is above -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jalta Ruh Mission</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400&display=swap');
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+        h1, h2 {
+            font-family: 'Playfair Display', serif;
+        }
+        /* Fade-in animation for hero text */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in {
+            animation: fadeIn 1s ease-in-out;
+        }
+        /* Hover scale effect */
+        .hover-scale {
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+        .hover-scale:hover {
+            transform: scale(1.05);
+            border-color: #facc15; /* Gold */
+        }
+        /* Navigation link hover effect */
+        .nav-link {
+            transition: transform 0.2s ease, color 0.2s ease;
+        }
+        .nav-link:hover {
+            transform: scale(1.1);
+            color: #facc15;
+        }
+        /* Video optimization styles */
+        .hero-video {
+            object-fit: cover;
+            object-position: center;
+        }
+        .video-fallback {
+            background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+            background-size: cover;
+            background-position: center;
+        }
+        /* Loading spinner */
+        .loading-spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #facc15;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        /* Play button overlay */
+        .play-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 15;
+        }
+        .play-overlay:hover {
+            background: rgba(0, 0, 0, 0.9);
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+        .play-button {
+            width: 0;
+            height: 0;
+            border-left: 20px solid white;
+            border-top: 12px solid transparent;
+            border-bottom: 12px solid transparent;
+            margin-left: 4px;
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800">
 
-<!-- About Page -->
-<section id="about-content" class="hidden py-16 bg-gray-50">
-  <div class="container mx-auto px-4">
-    <h2 class="text-4xl font-bold text-center text-yellow-600 mb-8">About Us</h2>
-    <p class="text-center max-w-2xl mx-auto mb-12 text-gray-700">
-      Learn about our mission, values, and the heart of Jalta Ruh Mission. Placeholder image below will be replaced with real content later.
-    </p>
-    <div class="flex justify-center">
-      <img src="https://via.placeholder.com/800x400?text=About+Page+Placeholder" alt="About" class="rounded-lg shadow-lg">
-    </div>
-  </div>
-</section>
+    <!-- Navigation Bar -->
+    <nav class="bg-gradient-to-r from-black to-gray-800 shadow-lg fixed w-full top-0 z-20 border-b border-yellow-400">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <h1 class="text-3xl font-bold text-orange-500 drop-shadow-md">Ignite Your Faith in Divine Light</h1>
+            <div class="space-x-4 md:space-x-8">
+                <a href="#" class="text-white nav-link">Home</a>
+                <a href="#" class="text-white nav-link">About</a>
+                <a href="#" class="text-white nav-link">Services</a>
+                <a href="#" class="text-white nav-link">Events</a>
+                <a href="#" class="text-white nav-link">Contact</a>
+            </div>
+        </div>
+    </nav>
 
-<!-- Services Page -->
-<section id="services-content" class="hidden py-16 bg-gray-100">
-  <div class="container mx-auto px-4">
-    <h2 class="text-4xl font-bold text-center text-yellow-600 mb-8">Our Services</h2>
-    <p class="text-center max-w-2xl mx-auto mb-12 text-gray-700">
-      Discover the various services we offer to our community. Each service can have a dedicated section with images or icons.
-    </p>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      <div class="bg-white rounded-lg shadow-lg p-6 text-center hover:shadow-2xl transition">
-        <img src="https://via.placeholder.com/150" alt="Service 1" class="mx-auto mb-4 rounded-full">
-        <h3 class="text-xl font-bold mb-2">Service 1</h3>
-        <p class="text-gray-600">Brief description of Service 1 goes here.</p>
-      </div>
-      <div class="bg-white rounded-lg shadow-lg p-6 text-center hover:shadow-2xl transition">
-        <img src="https://via.placeholder.com/150" alt="Service 2" class="mx-auto mb-4 rounded-full">
-        <h3 class="text-xl font-bold mb-2">Service 2</h3>
-        <p class="text-gray-600">Brief description of Service 2 goes here.</p>
-      </div>
-      <div class="bg-white rounded-lg shadow-lg p-6 text-center hover:shadow-2xl transition">
-        <img src="https://via.placeholder.com/150" alt="Service 3" class="mx-auto mb-4 rounded-full">
-        <h3 class="text-xl font-bold mb-2">Service 3</h3>
-        <p class="text-gray-600">Brief description of Service 3 goes here.</p>
-      </div>
-    </div>
-  </div>
-</section>
+    <!-- Hero Section with Optimized Background Video -->
+    <section id="hero" class="relative h-screen overflow-hidden pt-16 video-fallback">
+        <!-- Loading Indicator -->
+        <div id="loading-indicator" class="absolute inset-0 flex items-center justify-center z-5">
+            <div class="loading-spinner"></div>
+        </div>
 
-<!-- Events Page -->
-<section id="events-content" class="hidden py-16 bg-gray-50">
-  <div class="container mx-auto px-4">
-    <h2 class="text-4xl font-bold text-center text-yellow-600 mb-8">Upcoming Events</h2>
-    <p class="text-center max-w-2xl mx-auto mb-12 text-gray-700">
-      Stay updated with our latest events and gatherings. Placeholder images will be replaced with real event photos later.
-    </p>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-      <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-2xl transition">
-        <img src="https://via.placeholder.com/400x250" alt="Event 1" class="rounded-lg mb-4">
-        <h3 class="text-2xl font-bold mb-2">Event 1</h3>
-        <p class="text-gray-600">Short description and date for Event 1.</p>
-      </div>
-      <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-2xl transition">
-        <img src="https://via.placeholder.com/400x250" alt="Event 2" class="rounded-lg mb-4">
-        <h3 class="text-2xl font-bold mb-2">Event 2</h3>
-        <p class="text-gray-600">Short description and date for Event 2.</p>
-      </div>
-    </div>
-  </div>
-</section>
+        <!-- Play Button Overlay (shows if autoplay fails) -->
+        <div id="play-overlay" class="play-overlay" style="display: none;">
+            <div class="play-button"></div>
+        </div>
 
-<!-- Contact Page -->
-<section id="contact-content" class="hidden py-16 bg-gray-100">
-  <div class="container mx-auto px-4">
-    <h2 class="text-4xl font-bold text-center text-yellow-600 mb-8">Contact Us</h2>
-    <p class="text-center max-w-2xl mx-auto mb-12 text-gray-700">
-      Reach out to us using the details below. Existing contact information is reused from your homepage footer.
-    </p>
-    <div class="max-w-xl mx-auto bg-white rounded-lg shadow-lg p-8">
-      <p class="mb-2"><strong>Email:</strong> <a href="mailto:info@jaltaruhmission.org" class="text-yellow-600 hover:text-yellow-400">info@jaltaruhmission.org</a></p>
-      <p class="mb-2"><strong>Address:</strong> 9A George Terrace, Onehunga, Auckland 1061, New Zealand</p>
-      <p class="mb-2"><strong>Phone:</strong> <a href="tel:0210427487" class="text-yellow-600 hover:text-yellow-400">0210 427 487</a></p>
-    </div>
-  </div>
-</section>
+        <!-- Background Video with Optimization -->
+        <video 
+            id="hero-video"
+            autoplay
+            muted 
+            loop 
+            playsinline 
+            preload="auto"
+            class="absolute top-0 left-0 w-full h-full hero-video opacity-0 transition-opacity duration-1000"
+            poster="images/video-poster.jpg">
+            <!-- Multiple formats for better compatibility and smaller file sizes -->
+            <source src="videos/hero-video-compressed.webm" type="video/webm">
+            <source src="videos/hero-video-compressed.mp4" type="video/mp4">
+            <source src="videos/hero-video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+        <!-- Overlay for Readability -->
+        <div class="absolute inset-0 bg-black opacity-50 z-5"></div>
+
+        <!-- Hero Content -->
+        <div class="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-4">
+            <h1 class="text-5xl md:text-7xl font-bold mb-4 text-yellow-300 drop-shadow-lg fade-in">LEVITICUS 6 : 13</h1>
+            <p class="text-xl md:text-3xl max-w-3xl text-yellow-100 drop-shadow-md fade-in" style="animation-delay: 0.3s;">Join us at the Jalta Ruh Mission as we inspire one another to love God and do good.</p>
+        </div>
+    </section>
+
+    <!-- Two Image/Video Slots Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Left Image Placeholder -->
+                <img src="images/church-event-1.jpg" alt="Church Event 1" class="w-full h-auto rounded-lg shadow-lg hover-scale border-2 border-transparent" loading="lazy">
+                <!-- Right Video Placeholder with Auto Loop -->
+                <video 
+                    autoplay
+                    muted
+                    loop
+                    playsinline
+                    preload="none"
+                    class="w-full h-auto rounded-lg shadow-lg hover-scale border-2 border-transparent"
+                    poster="images/event-video-poster.jpg">
+                    <source src="videos/event-video-compressed.webm" type="video/webm">
+                    <source src="videos/event-video-compressed.mp4" type="video/mp4">
+                    <source src="videos/event-video.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer: Contact & Church Info -->
+    <footer class="bg-gradient-to-t from-gray-200 to-white py-8 text-center">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-4 text-yellow-600 drop-shadow-md">Jalta Ruh Mission</h2>
+            <p class="mb-2">Email: <a href="mailto:info@jaltaruhmission.org" class="text-yellow-600 hover:text-yellow-400 transition-colors duration-200">info@jaltaruhmission.org</a></p>
+            <p class="mb-2">Address: 9A George Terrace, Onehunga, Auckland 1061, New Zealand</p>
+            <p class="mb-2">Phone: <a href="tel:0210427487" class="text-yellow-600 hover:text-yellow-400 transition-colors duration-200">0210 427 487</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Video optimization and loading management
+        document.addEventListener('DOMContentLoaded', function() {
+            const heroVideo = document.getElementById('hero-video');
+            const loadingIndicator = document.getElementById('loading-indicator');
+            const playOverlay = document.getElementById('play-overlay');
+            const heroSection = document.getElementById('hero');
+            let userInteracted = false;
+            let keepPlayingInterval;
+
+            // Track user interaction
+            function enableUserInteraction() {
+                userInteracted = true;
+                tryAutoplay();
+            }
+
+            // Add event listeners for user interaction
+            document.addEventListener('click', enableUserInteraction, { once: true });
+            document.addEventListener('scroll', enableUserInteraction, { once: true });
+            document.addEventListener('keydown', enableUserInteraction, { once: true });
+            document.addEventListener('touchstart', enableUserInteraction, { once: true });
+
+            // Function to handle video loading
+            function handleVideoLoad() {
+                heroVideo.style.opacity = '1';
+                loadingIndicator.style.display = 'none';
+            }
+
+            // Function to handle video error
+            function handleVideoError() {
+                console.log('Video failed to load, using fallback background');
+                loadingIndicator.style.display = 'none';
+                playOverlay.style.display = 'none';
+                heroSection.style.backgroundImage = 'linear-gradient(135deg, #1f2937 0%, #374151 100%)';
+            }
+
+            // Function to attempt autoplay
+            function tryAutoplay() {
+                if (heroVideo.readyState >= 2) {
+                    const playPromise = heroVideo.play();
+                    
+                    if (playPromise !== undefined) {
+                        playPromise
+                            .then(() => {
+                                // Autoplay started successfully
+                                playOverlay.style.display = 'none';
+                                startVideoKeepAlive();
+                            })
+                            .catch((error) => {
+                                // Autoplay was prevented, show play button
+                                console.log('Autoplay prevented, showing play button:', error);
+                                playOverlay.style.display = 'flex';
+                            });
+                    }
+                }
+            }
+
+            // Aggressive method to keep video playing continuously
+            function startVideoKeepAlive() {
+                clearInterval(keepPlayingInterval);
+                keepPlayingInterval = setInterval(function() {
+                    if (heroVideo.paused && heroVideo.readyState >= 2 && !heroVideo.ended && userInteracted) {
+                        heroVideo.play().catch(function() {
+                            // Silently handle play errors
+                        });
+                    }
+                }, 100);
+            }
+
+            // Handle play overlay click
+            playOverlay.addEventListener('click', function() {
+                userInteracted = true;
+                heroVideo.play()
+                    .then(() => {
+                        playOverlay.style.display = 'none';
+                        startVideoKeepAlive();
+                    })
+                    .catch((error) => {
+                        console.log('Manual play failed:', error);
+                    });
+            });
+
+            // Video event listeners
+            heroVideo.addEventListener('canplay', function() {
+                handleVideoLoad();
+                // Try autoplay immediately when video can play
+                setTimeout(tryAutoplay, 100);
+            });
+
+            heroVideo.addEventListener('canplaythrough', function() {
+                // Try autoplay when video can play through completely
+                tryAutoplay();
+            });
+
+            heroVideo.addEventListener('loadeddata', function() {
+                // Try autoplay when video data is loaded
+                tryAutoplay();
+            });
+
+            heroVideo.addEventListener('error', handleVideoError);
+
+            // Prevent pause events from actually pausing the video
+            heroVideo.addEventListener('pause', function(event) {
+                if (userInteracted) {
+                    setTimeout(function() {
+                        if (heroVideo.paused && heroVideo.readyState >= 2 && !heroVideo.ended) {
+                            heroVideo.play().catch(function() {});
+                        }
+                    }, 50);
+                }
+            });
+
+            // Handle visibility changes
+            document.addEventListener('visibilitychange', function() {
+                if (document.visibilityState === 'visible' && userInteracted) {
+                    setTimeout(function() {
+                        if (heroVideo.paused && heroVideo.readyState >= 2) {
+                            heroVideo.play().catch(function() {});
+                        }
+                    }, 100);
+                }
+            });
+
+            // Fallback timeout
+            setTimeout(function() {
+                if (heroVideo.style.opacity === '0' || heroVideo.style.opacity === '') {
+                    console.log('Video loading timeout, using fallback');
+                    handleVideoError();
+                }
+            }, 5000);
+
+            // Force load the video immediately
+            heroVideo.load();
+
+            // Try autoplay after a short delay
+            setTimeout(function() {
+                if (!userInteracted) {
+                    // Try silent autoplay first
+                    tryAutoplay();
+                }
+            }, 500);
+
+            // Intersection Observer for lazy loading secondary video
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '50px'
+            };
+
+            const videoObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const video = entry.target;
+                        if (video.getAttribute('preload') === 'none') {
+                            video.setAttribute('preload', 'metadata');
+                            video.load();
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all videos with lazy loading
+            document.querySelectorAll('video[preload="none"]').forEach(video => {
+                videoObserver.observe(video);
+            });
+        });
+    </script>
+
+</body>
+</html>
