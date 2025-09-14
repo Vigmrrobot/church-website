@@ -198,14 +198,21 @@
                 videoObserver.observe(video);
             });
 
+            // Force autoplay after loading
+            heroVideo.addEventListener('loadeddata', function() {
+                heroVideo.play().catch(function(error) {
+                    console.log('Autoplay prevented:', error);
+                    // If autoplay is blocked, show controls so user can manually play
+                    heroVideo.setAttribute('controls', 'true');
+                });
+            });
+
             // Connection-based quality adjustment
             if ('connection' in navigator) {
                 const connection = navigator.connection;
                 if (connection && (connection.effectiveType === 'slow-2g' || connection.effectiveType === '2g')) {
-                    // For very slow connections, don't auto-play the video
-                    heroVideo.autoplay = false;
+                    // For very slow connections, still try to autoplay but with controls
                     heroVideo.setAttribute('controls', 'true');
-                    handleVideoError(); // Use fallback background immediately
                 }
             }
         });
