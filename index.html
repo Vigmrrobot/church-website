@@ -37,6 +37,29 @@
             transform: scale(1.1);
             color: #facc15;
         }
+        /* Video optimization styles */
+        .hero-video {
+            object-fit: cover;
+            object-position: center;
+        }
+        .video-fallback {
+            background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+            background-size: cover;
+            background-position: center;
+        }
+        /* Loading spinner */
+        .loading-spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #facc15;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
     </style>
 </head>
 <body class="bg-white text-gray-800">
@@ -55,16 +78,32 @@
         </div>
     </nav>
 
-    <!-- Hero Section with Background Video -->
-    <section class="relative h-screen overflow-hidden pt-16">
-        <!-- Background Video -->
-        <video autoplay muted loop playsinline class="absolute top-0 left-0 w-full h-full object-cover">
+    <!-- Hero Section with Optimized Background Video -->
+    <section id="hero" class="relative h-screen overflow-hidden pt-16 video-fallback">
+        <!-- Loading Indicator -->
+        <div id="loading-indicator" class="absolute inset-0 flex items-center justify-center z-5">
+            <div class="loading-spinner"></div>
+        </div>
+
+        <!-- Background Video with Optimization -->
+        <video 
+            id="hero-video"
+            autoplay 
+            muted 
+            loop 
+            playsinline 
+            preload="metadata"
+            class="absolute top-0 left-0 w-full h-full hero-video opacity-0 transition-opacity duration-1000"
+            poster="images/video-poster.jpg">
+            <!-- Multiple formats for better compatibility and smaller file sizes -->
+            <source src="videos/hero-video-compressed.webm" type="video/webm">
+            <source src="videos/hero-video-compressed.mp4" type="video/mp4">
             <source src="videos/hero-video.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
 
         <!-- Overlay for Readability -->
-        <div class="absolute inset-0 bg-black opacity-50"></div>
+        <div class="absolute inset-0 bg-black opacity-50 z-5"></div>
 
         <!-- Hero Content -->
         <div class="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-4">
@@ -78,9 +117,15 @@
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <!-- Left Image Placeholder -->
-                <img src="images/church-event-1.jpg" alt="Church Event 1" class="w-full h-auto rounded-lg shadow-lg hover-scale border-2 border-transparent">
-                <!-- Right Video Placeholder -->
-                <video autoplay muted loop playsinline class="w-full h-auto rounded-lg shadow-lg hover-scale border-2 border-transparent">
+                <img src="images/church-event-1.jpg" alt="Church Event 1" class="w-full h-auto rounded-lg shadow-lg hover-scale border-2 border-transparent" loading="lazy">
+                <!-- Right Video Placeholder with Lazy Loading -->
+                <video 
+                    preload="none"
+                    controls
+                    class="w-full h-auto rounded-lg shadow-lg hover-scale border-2 border-transparent"
+                    poster="images/event-video-poster.jpg">
+                    <source src="videos/event-video-compressed.webm" type="video/webm">
+                    <source src="videos/event-video-compressed.mp4" type="video/mp4">
                     <source src="videos/event-video.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
@@ -97,6 +142,74 @@
             <p class="mb-2">Phone: <a href="tel:0210427487" class="text-yellow-600 hover:text-yellow-400 transition-colors duration-200">0210 427 487</a></p>
         </div>
     </footer>
+
+    <script>
+        // Video optimization and loading management
+        document.addEventListener('DOMContentLoaded', function() {
+            const heroVideo = document.getElementById('hero-video');
+            const loadingIndicator = document.getElementById('loading-indicator');
+            const heroSection = document.getElementById('hero');
+
+            // Function to handle video loading
+            function handleVideoLoad() {
+                heroVideo.style.opacity = '1';
+                loadingIndicator.style.display = 'none';
+            }
+
+            // Function to handle video error
+            function handleVideoError() {
+                console.log('Video failed to load, using fallback background');
+                loadingIndicator.style.display = 'none';
+                heroSection.style.backgroundImage = 'linear-gradient(135deg, #1f2937 0%, #374151 100%)';
+            }
+
+            // Check if video can play through without buffering
+            heroVideo.addEventListener('canplaythrough', handleVideoLoad);
+            heroVideo.addEventListener('error', handleVideoError);
+
+            // Fallback for slow connections - if video doesn't load within 3 seconds
+            setTimeout(function() {
+                if (heroVideo.style.opacity === '0' || heroVideo.style.opacity === '') {
+                    console.log('Video loading timeout, using fallback');
+                    handleVideoError();
+                }
+            }, 3000);
+
+            // Intersection Observer for lazy loading secondary video
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '50px'
+            };
+
+            const videoObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const video = entry.target;
+                        if (video.getAttribute('preload') === 'none') {
+                            video.setAttribute('preload', 'metadata');
+                            video.load();
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all videos with lazy loading
+            document.querySelectorAll('video[preload="none"]').forEach(video => {
+                videoObserver.observe(video);
+            });
+
+            // Connection-based quality adjustment
+            if ('connection' in navigator) {
+                const connection = navigator.connection;
+                if (connection && (connection.effectiveType === 'slow-2g' || connection.effectiveType === '2g')) {
+                    // For very slow connections, don't auto-play the video
+                    heroVideo.autoplay = false;
+                    heroVideo.setAttribute('controls', 'true');
+                    handleVideoError(); // Use fallback background immediately
+                }
+            }
+        });
+    </script>
 
 </body>
 </html>
