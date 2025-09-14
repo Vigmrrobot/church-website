@@ -152,12 +152,13 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <!-- Left Image Placeholder -->
                 <img src="images/church-event-1.jpg" alt="Church Event 1" class="w-full h-auto rounded-lg shadow-lg hover-scale border-2 border-transparent" loading="lazy">
-                <!-- Right Video Placeholder with Lazy Loading -->
+                <!-- Right Video Placeholder with Auto Loop -->
                 <video 
-                    preload="none"
-                    controls
-                    loop
+                    autoplay
                     muted
+                    loop
+                    playsinline
+                    preload="none"
                     class="w-full h-auto rounded-lg shadow-lg hover-scale border-2 border-transparent"
                     poster="images/event-video-poster.jpg">
                     <source src="videos/event-video-compressed.webm" type="video/webm">
