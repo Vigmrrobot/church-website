@@ -89,6 +89,23 @@
             border-bottom: 12px solid transparent;
             margin-left: 4px;
         }
+        /* Services page styles */
+        #services-page {
+            display: none;
+            min-height: 100vh;
+            padding-top: 80px;
+        }
+        .placeholder-image {
+            width: 100%;
+            height: 300px;
+            background-color: #f3f4f6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px dashed #d1d5db;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
     </style>
 </head>
 <body class="bg-white text-gray-800">
@@ -98,77 +115,118 @@
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
             <h1 class="text-3xl font-bold text-orange-500 drop-shadow-md">Ignite Your Faith in Divine Light</h1>
             <div class="space-x-4 md:space-x-8">
-                <a href="#" class="text-white nav-link">Home</a>
+                <a href="#" class="text-white nav-link" onclick="showPage('home-page')">Home</a>
                 <a href="#" class="text-white nav-link">About</a>
-                <a href="#" class="text-white nav-link">Services</a>
+                <a href="#" class="text-white nav-link" onclick="showPage('services-page')">Services</a>
                 <a href="#" class="text-white nav-link">Events</a>
                 <a href="#" class="text-white nav-link">Contact</a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section with Optimized Background Video -->
-    <section id="hero" class="relative h-screen overflow-hidden pt-16 video-fallback">
-        <!-- Loading Indicator -->
-        <div id="loading-indicator" class="absolute inset-0 flex items-center justify-center z-5">
-            <div class="loading-spinner"></div>
-        </div>
+    <!-- Home Page (unchanged) -->
+    <div id="home-page">
+        <!-- Hero Section with Optimized Background Video -->
+        <section id="hero" class="relative h-screen overflow-hidden pt-16 video-fallback">
+            <!-- Loading Indicator -->
+            <div id="loading-indicator" class="absolute inset-0 flex items-center justify-center z-5">
+                <div class="loading-spinner"></div>
+            </div>
 
-        <!-- Play Button Overlay (shows if autoplay fails) -->
-        <div id="play-overlay" class="play-overlay" style="display: none;">
-            <div class="play-button"></div>
-        </div>
+            <!-- Play Button Overlay (shows if autoplay fails) -->
+            <div id="play-overlay" class="play-overlay" style="display: none;">
+                <div class="play-button"></div>
+            </div>
 
-        <!-- Background Video with Optimization -->
-        <video 
-            id="hero-video"
-            autoplay
-            muted 
-            loop 
-            playsinline 
-            preload="auto"
-            class="absolute top-0 left-0 w-full h-full hero-video opacity-0 transition-opacity duration-1000"
-            poster="images/video-poster.jpg">
-            <!-- Multiple formats for better compatibility and smaller file sizes -->
-            <source src="videos/hero-video-compressed.webm" type="video/webm">
-            <source src="videos/hero-video-compressed.mp4" type="video/mp4">
-            <source src="videos/hero-video.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
+            <!-- Background Video with Optimization -->
+            <video 
+                id="hero-video"
+                autoplay
+                muted 
+                loop 
+                playsinline 
+                preload="auto"
+                class="absolute top-0 left-0 w-full h-full hero-video opacity-0 transition-opacity duration-1000"
+                poster="images/video-poster.jpg">
+                <!-- Multiple formats for better compatibility and smaller file sizes -->
+                <source src="videos/hero-video-compressed.webm" type="video/webm">
+                <source src="videos/hero-video-compressed.mp4" type="video/mp4">
+                <source src="videos/hero-video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
 
-        <!-- Overlay for Readability -->
-        <div class="absolute inset-0 bg-black opacity-50 z-5"></div>
+            <!-- Overlay for Readability -->
+            <div class="absolute inset-0 bg-black opacity-50 z-5"></div>
 
-        <!-- Hero Content -->
-        <div class="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-4">
-            <h1 class="text-5xl md:text-7xl font-bold mb-4 text-yellow-300 drop-shadow-lg fade-in">LEVITICUS 6 : 13</h1>
-            <p class="text-xl md:text-3xl max-w-3xl text-yellow-100 drop-shadow-md fade-in" style="animation-delay: 0.3s;">Join us at the Jalta Ruh Mission as we inspire one another to love God and do good.</p>
-        </div>
-    </section>
+            <!-- Hero Content -->
+            <div class="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-4">
+                <h1 class="text-5xl md:text-7xl font-bold mb-4 text-yellow-300 drop-shadow-lg fade-in">LEVITICUS 6 : 13</h1>
+                <p class="text-xl md:text-3xl max-w-3xl text-yellow-100 drop-shadow-md fade-in" style="animation-delay: 0.3s;">Join us at the Jalta Ruh Mission as we inspire one another to love God and do good.</p>
+            </div>
+        </section>
 
-    <!-- Two Image/Video Slots Section -->
-    <section class="py-16 bg-white">
+        <!-- Two Image/Video Slots Section -->
+        <section class="py-16 bg-white">
+            <div class="container mx-auto px-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Left Image Placeholder -->
+                    <img src="images/church-event-1.jpg" alt="Church Event 1" class="w-full h-auto rounded-lg shadow-lg hover-scale border-2 border-transparent" loading="lazy">
+                    <!-- Right Video Placeholder with Auto Loop -->
+                    <video 
+                        autoplay
+                        muted
+                        loop
+                        playsinline
+                        preload="none"
+                        class="w-full h-auto rounded-lg shadow-lg hover-scale border-2 border-transparent"
+                        poster="images/event-video-poster.jpg">
+                        <source src="videos/event-video-compressed.webm" type="video/webm">
+                        <source src="videos/event-video-compressed.mp4" type="video/mp4">
+                        <source src="videos/event-video.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Services Page -->
+    <div id="services-page" class="bg-white py-16">
         <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Left Image Placeholder -->
-                <img src="images/church-event-1.jpg" alt="Church Event 1" class="w-full h-auto rounded-lg shadow-lg hover-scale border-2 border-transparent" loading="lazy">
-                <!-- Right Video Placeholder with Auto Loop -->
-                <video 
-                    autoplay
-                    muted
-                    loop
-                    playsinline
-                    preload="none"
-                    class="w-full h-auto rounded-lg shadow-lg hover-scale border-2 border-transparent"
-                    poster="images/event-video-poster.jpg">
-                    <source src="videos/event-video-compressed.webm" type="video/webm">
-                    <source src="videos/event-video-compressed.mp4" type="video/mp4">
-                    <source src="videos/event-video.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
+            <h2 class="text-4xl font-bold text-center mb-8 text-yellow-600">Our Services</h2>
+            
+            <!-- Placeholder Image -->
+            <div class="placeholder-image">
+                <span class="text-gray-500">Service Image Placeholder</span>
+            </div>
+            
+            <!-- Services Description -->
+            <div class="max-w-3xl mx-auto text-lg text-gray-700">
+                <p class="mb-6">
+                    At Jalta Ruh Mission, we offer a variety of services to nourish your spirit and strengthen your connection with God. 
+                    Our worship services are designed to inspire, uplift, and provide a sacred space for reflection and prayer.
+                </p>
+                
+                <p class="mb-6">
+                    Join us for our Sunday worship service where we come together as a community to celebrate faith through prayer, 
+                    music, and meaningful sermons that apply biblical teachings to modern life. Our services blend traditional 
+                    elements with contemporary worship to create an experience that resonates with people of all ages.
+                </p>
+                
+                <p class="mb-6">
+                    We also offer mid-week Bible study sessions, prayer meetings, and special seasonal services during holidays 
+                    that allow for deeper spiritual exploration and fellowship. All are welcome to participate in our services 
+                    regardless of where you are on your spiritual journey.
+                </p>
+                
+                <p>
+                    Our doors are always open to those seeking comfort, community, and a closer relationship with God. 
+                    We believe that through worship and service, we can grow together in faith and make a positive impact 
+                    in our community and beyond.
+                </p>
             </div>
         </div>
-    </section>
+    </div>
 
     <!-- Footer: Contact & Church Info -->
     <footer class="bg-gradient-to-t from-gray-200 to-white py-8 text-center">
@@ -181,6 +239,19 @@
     </footer>
 
     <script>
+        // Page navigation function
+        function showPage(pageId) {
+            // Hide all pages
+            document.getElementById('home-page').style.display = 'none';
+            document.getElementById('services-page').style.display = 'none';
+            
+            // Show the requested page
+            document.getElementById(pageId).style.display = 'block';
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
         // Video optimization and loading management
         document.addEventListener('DOMContentLoaded', function() {
             const heroVideo = document.getElementById('hero-video');
