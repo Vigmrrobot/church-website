@@ -37,20 +37,6 @@
             transform: scale(1.1);
             color: #facc15;
         }
-        /* Video fallback styles */
-        .video-container {
-            background: linear-gradient(135deg, #1f2937, #374151);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            min-height: 300px;
-        }
-        .video-fallback {
-            background: linear-gradient(135deg, #374151, #4b5563);
-            border: 2px dashed #6b7280;
-            border-radius: 0.5rem;
-        }
     </style>
 </head>
 <body class="bg-white text-gray-800">
@@ -71,27 +57,11 @@
 
     <!-- Hero Section with Background Video -->
     <section class="relative h-screen overflow-hidden pt-16">
-        <!-- Background Video with multiple formats and fallback -->
-        <video 
-            id="heroVideo"
-            autoplay 
-            muted 
-            loop 
-            playsinline 
-            preload="metadata"
-            class="absolute top-0 left-0 w-full h-full object-cover">
-            <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
-            <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.webm" type="video/webm">
+        <!-- Background Video -->
+        <video autoplay muted loop playsinline class="absolute top-0 left-0 w-full h-full object-cover">
+            <source src="videos/hero-video.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
-
-        <!-- Fallback background for when video doesn't load -->
-        <div class="absolute inset-0 video-container" id="videoFallback" style="display: none;">
-            <div class="text-center">
-                <div class="text-6xl mb-4">🎥</div>
-                <p class="text-xl">Background Video</p>
-            </div>
-        </div>
 
         <!-- Overlay for Readability -->
         <div class="absolute inset-0 bg-black opacity-50"></div>
@@ -108,36 +78,12 @@
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <!-- Left Image Placeholder -->
-                <div class="w-full h-80 rounded-lg shadow-lg hover-scale border-2 border-transparent bg-gradient-to-br from-blue-100 to-purple-100 flex items-center justify-center">
-                    <div class="text-center text-gray-600">
-                        <div class="text-6xl mb-4">📸</div>
-                        <p class="text-xl">Church Event Image</p>
-                    </div>
-                </div>
-                
-                <!-- Right Video with fallback -->
-                <div class="relative">
-                    <video 
-                        id="eventVideo"
-                        autoplay 
-                        muted 
-                        loop 
-                        playsinline 
-                        preload="metadata"
-                        class="w-full h-80 rounded-lg shadow-lg hover-scale border-2 border-transparent object-cover">
-                        <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4" type="video/mp4">
-                        <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.webm" type="video/webm">
-                        Your browser does not support the video tag.
-                    </video>
-                    
-                    <!-- Video fallback -->
-                    <div class="absolute inset-0 w-full h-80 rounded-lg shadow-lg hover-scale border-2 border-transparent video-fallback video-container" id="eventVideoFallback" style="display: none;">
-                        <div class="text-center text-gray-600">
-                            <div class="text-6xl mb-4">🎬</div>
-                            <p class="text-xl">Event Video</p>
-                        </div>
-                    </div>
-                </div>
+                <img src="images/church-event-1.jpg" alt="Church Event 1" class="w-full h-auto rounded-lg shadow-lg hover-scale border-2 border-transparent">
+                <!-- Right Video Placeholder -->
+                <video autoplay muted loop playsinline class="w-full h-auto rounded-lg shadow-lg hover-scale border-2 border-transparent">
+                    <source src="videos/event-video.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
             </div>
         </div>
     </section>
@@ -151,74 +97,6 @@
             <p class="mb-2">Phone: <a href="tel:0210427487" class="text-yellow-600 hover:text-yellow-400 transition-colors duration-200">0210 427 487</a></p>
         </div>
     </footer>
-
-    <script>
-        // Enhanced video autoplay handling
-        document.addEventListener('DOMContentLoaded', function() {
-            const videos = [
-                { element: document.getElementById('heroVideo'), fallback: document.getElementById('videoFallback') },
-                { element: document.getElementById('eventVideo'), fallback: document.getElementById('eventVideoFallback') }
-            ];
-
-            videos.forEach(({ element, fallback }) => {
-                if (element) {
-                    // Force play attempt
-                    const playPromise = element.play();
-                    
-                    if (playPromise !== undefined) {
-                        playPromise.then(() => {
-                            // Autoplay started successfully
-                            console.log('Video autoplay started');
-                        }).catch(error => {
-                            // Autoplay failed, show fallback
-                            console.log('Video autoplay failed:', error);
-                            if (fallback) {
-                                element.style.display = 'none';
-                                fallback.style.display = 'flex';
-                            }
-                        });
-                    }
-
-                    // Handle video load errors
-                    element.addEventListener('error', function() {
-                        console.log('Video failed to load');
-                        if (fallback) {
-                            element.style.display = 'none';
-                            fallback.style.display = 'flex';
-                        }
-                    });
-
-                    // Ensure video is muted for autoplay
-                    element.muted = true;
-                    element.volume = 0;
-
-                    // Try to play on user interaction if autoplay failed
-                    document.addEventListener('click', function playOnClick() {
-                        element.play().catch(e => console.log('Manual play failed:', e));
-                        document.removeEventListener('click', playOnClick);
-                    }, { once: true });
-                }
-            });
-        });
-
-        // Intersection Observer for performance
-        if ('IntersectionObserver' in window) {
-            const videoObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    const video = entry.target;
-                    if (entry.isIntersecting) {
-                        video.play().catch(e => console.log('Intersection play failed:', e));
-                    } else {
-                        video.pause();
-                    }
-                });
-            });
-
-            document.querySelectorAll('video').forEach(video => {
-                videoObserver.observe(video);
-            });
-        }
-    </script>
 
 </body>
 </html>
