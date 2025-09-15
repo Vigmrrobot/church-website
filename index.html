@@ -195,26 +195,43 @@
             </div>
         </section>
 
-        <!-- Two Image/Video Slots Section -->
+        <!-- Two Video Slots Section - Centered and stacked vertically -->
         <section class="py-16 bg-white">
             <div class="container mx-auto px-4">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <!-- Left Image Placeholder -->
-                    <img src="images/church-event-1.jpg" alt="Church Event 1" class="w-full h-auto rounded-lg shadow-lg hover-scale border-2 border-transparent" loading="lazy">
-                    <!-- Right Video Placeholder with Auto Loop -->
-                    <video 
-                        autoplay
-                        muted
-                        loop
-                        playsinline
-                        preload="none"
-                        class="w-full h-auto rounded-lg shadow-lg hover-scale border-2 border-transparent"
-                        poster="images/event-video-poster.jpg">
-                        <source src="videos/event-video-compressed.webm" type="video/webm">
-                        <source src="videos/event-video-compressed.mp4" type="video/mp4">
-                        <source src="videos/event-video.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
+                <div class="max-w-4xl mx-auto space-y-12">
+                    <!-- Event Video at the top center -->
+                    <div class="flex justify-center">
+                        <video 
+                            autoplay
+                            muted
+                            loop
+                            playsinline
+                            preload="none"
+                            class="w-full max-w-2xl h-auto rounded-lg shadow-lg hover-scale border-2 border-transparent"
+                            poster="images/event-video-poster.jpg">
+                            <source src="videos/event-video-compressed.webm" type="video/webm">
+                            <source src="videos/event-video-compressed.mp4" type="video/mp4">
+                            <source src="videos/event-video.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    
+                    <!-- Hero Video at the bottom center -->
+                    <div class="flex justify-center">
+                        <video 
+                            autoplay
+                            muted
+                            loop
+                            playsinline
+                            preload="none"
+                            class="w-full max-w-2xl h-auto rounded-lg shadow-lg hover-scale border-2 border-transparent"
+                            poster="images/video-poster.jpg">
+                            <source src="videos/hero-video-compressed.webm" type="video/webm">
+                            <source src="videos/hero-video-compressed.mp4" type="video/mp4">
+                            <source src="videos/hero-video.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
                 </div>
             </div>
         </section>
@@ -533,258 +550,3 @@
                                         <svg class="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                         </svg>
-                                    </div>
-                                    <div>
-                                        <h4 class="font-bold text-lg text-gray-800">Office Hours</h4>
-                                        <p class="text-gray-700">Monday - Friday: 9:00 AM - 4:00 PM</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <h3 class="text-2xl font-bold mb-6 text-gray-800">Send Us a Message</h3>
-                            <form class="contact-form space-y-6">
-                                <div>
-                                    <label for="name" class="block text-gray-700 font-medium mb-2">Your Name</label>
-                                    <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500">
-                                </div>
-                                <div>
-                                    <label for="email" class="block text-gray-700 font-medium mb-2">Email Address</label>
-                                    <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500">
-                                </div>
-                                <div>
-                                    <label for="subject" class="block text-gray-700 font-medium mb-2">Subject</label>
-                                    <input type="text" id="subject" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500">
-                                </div>
-                                <div>
-                                    <label for="message" class="block text-gray-700 font-medium mb-2">Message</label>
-                                    <textarea id="message" rows="5" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500"></textarea>
-                                </div>
-                                <button type="submit" class="w-full bg-yellow-500 text-white font-bold py-3 px-4 rounded-lg hover:bg-yellow-600 transition duration-300">Send Message</button>
-                            </form>
-                        </div>
-                    </div>
-                    
-                    <div class="bg-gray-50 p-8 rounded-lg">
-                        <h3 class="text-2xl font-bold mb-6 text-center text-gray-800">Visit Us</h3>
-                        <div class="aspect-w-16 aspect-h-9 bg-gray-200 rounded-lg flex items-center justify-center text-gray-500">
-                            <span>Map Location Placeholder</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <!-- Footer: Contact & Church Info -->
-    <footer class="bg-gradient-to-t from-gray-200 to-white py-8 text-center">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-4 text-yellow-600 drop-shadow-md">Jalta Ruh Mission</h2>
-            <p class="mb-2">Email: <a href="mailto:info@jaltaruhmission.org" class="text-yellow-600 hover:text-yellow-400 transition-colors duration-200">info@jaltaruhmission.org</a></p>
-            <p class="mb-2">Address: 9A George Terrace, Onehunga, Auckland 1061, New Zealand</p>
-            <p class="mb-2">Phone: <a href="tel:0210427487" class="text-yellow-600 hover:text-yellow-400 transition-colors duration-200">0210 427 487</a></p>
-            <p class="mt-6 text-gray-600">© 2023 Jalta Ruh Mission. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <script>
-        // Page navigation function
-        function showPage(pageId) {
-            // Hide all pages
-            document.querySelectorAll('.page').forEach(page => {
-                page.style.display = 'none';
-            });
-            
-            // Show the requested page
-            document.getElementById(pageId).style.display = 'block';
-            
-            // Update active navigation link
-            document.querySelectorAll('.nav-link').forEach(link => {
-                link.classList.remove('active-page');
-            });
-            
-            // Find and activate the clicked link (simplified for demo)
-            document.querySelectorAll('.nav-link').forEach(link => {
-                if (link.textContent.toLowerCase() === pageId.replace('-page', '')) {
-                    link.classList.add('active-page');
-                }
-            });
-            
-            // Special case for Home link
-            if (pageId === 'home-page') {
-                document.querySelector('.nav-link').classList.add('active-page');
-            }
-            
-            // Scroll to top
-            window.scrollTo(0, 0);
-        }
-
-        // Video optimization and loading management
-        document.addEventListener('DOMContentLoaded', function() {
-            const heroVideo = document.getElementById('hero-video');
-            const loadingIndicator = document.getElementById('loading-indicator');
-            const playOverlay = document.getElementById('play-overlay');
-            const heroSection = document.getElementById('hero');
-            let userInteracted = false;
-            let keepPlayingInterval;
-
-            // Track user interaction
-            function enableUserInteraction() {
-                userInteracted = true;
-                tryAutoplay();
-            }
-
-            // Add event listeners for user interaction
-            document.addEventListener('click', enableUserInteraction, { once: true });
-            document.addEventListener('scroll', enableUserInteraction, { once: true });
-            document.addEventListener('keydown', enableUserInteraction, { once: true });
-            document.addEventListener('touchstart', enableUserInteraction, { once: true });
-
-            // Function to handle video loading
-            function handleVideoLoad() {
-                heroVideo.style.opacity = '1';
-                loadingIndicator.style.display = 'none';
-            }
-
-            // Function to handle video error
-            function handleVideoError() {
-                console.log('Video failed to load, using fallback background');
-                loadingIndicator.style.display = 'none';
-                playOverlay.style.display = 'none';
-                heroSection.style.backgroundImage = 'linear-gradient(135deg, #1f2937 0%, #374151 100%)';
-            }
-
-            // Function to attempt autoplay
-            function tryAutoplay() {
-                if (heroVideo.readyState >= 2) {
-                    const playPromise = heroVideo.play();
-                    
-                    if (playPromise !== undefined) {
-                        playPromise
-                            .then(() => {
-                                // Autoplay started successfully
-                                playOverlay.style.display = 'none';
-                                startVideoKeepAlive();
-                            })
-                            .catch((error) => {
-                                // Autoplay was prevented, show play button
-                                console.log('Autoplay prevented, showing play button:', error);
-                                playOverlay.style.display = 'flex';
-                            });
-                    }
-                }
-            }
-
-            // Aggressive method to keep video playing continuously
-            function startVideoKeepAlive() {
-                clearInterval(keepPlayingInterval);
-                keepPlayingInterval = setInterval(function() {
-                    if (heroVideo.paused && heroVideo.readyState >= 2 && !heroVideo.ended && userInteracted) {
-                        heroVideo.play().catch(function() {
-                            // Silently handle play errors
-                        });
-                    }
-                }, 100);
-            }
-
-            // Handle play overlay click
-            playOverlay.addEventListener('click', function() {
-                userInteracted = true;
-                heroVideo.play()
-                    .then(() => {
-                        playOverlay.style.display = 'none';
-                        startVideoKeepAlive();
-                    })
-                    .catch((error) => {
-                        console.log('Manual play failed:', error);
-                    });
-            });
-
-            // Video event listeners
-            heroVideo.addEventListener('canplay', function() {
-                handleVideoLoad();
-                // Try autoplay immediately when video can play
-                setTimeout(tryAutoplay, 100);
-            });
-
-            heroVideo.addEventListener('canplaythrough', function() {
-                // Try autoplay when video can play through completely
-                tryAutoplay();
-            });
-
-            heroVideo.addEventListener('loadeddata', function() {
-                // Try autoplay when video data is loaded
-                tryAutoplay();
-            });
-
-            heroVideo.addEventListener('error', handleVideoError);
-
-            // Prevent pause events from actually pausing the video
-            heroVideo.addEventListener('pause', function(event) {
-                if (userInteracted) {
-                    setTimeout(function() {
-                        if (heroVideo.paused && heroVideo.readyState >= 2 && !heroVideo.ended) {
-                            heroVideo.play().catch(function() {});
-                        }
-                    }, 50);
-                }
-            });
-
-            // Handle visibility changes
-            document.addEventListener('visibilitychange', function() {
-                if (document.visibilityState === 'visible' && userInteracted) {
-                    setTimeout(function() {
-                        if (heroVideo.paused && heroVideo.readyState >= 2) {
-                            heroVideo.play().catch(function() {});
-                        }
-                    }, 100);
-                }
-            });
-
-            // Fallback timeout
-            setTimeout(function() {
-                if (heroVideo.style.opacity === '0' || heroVideo.style.opacity === '') {
-                    console.log('Video loading timeout, using fallback');
-                    handleVideoError();
-                }
-            }, 5000);
-
-            // Force load the video immediately
-            heroVideo.load();
-
-            // Try autoplay after a short delay
-            setTimeout(function() {
-                if (!userInteracted) {
-                    // Try silent autoplay first
-                    tryAutoplay();
-                }
-            }, 500);
-
-            // Intersection Observer for lazy loading secondary video
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '50px'
-            };
-
-            const videoObserver = new IntersectionObserver(function(entries) {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const video = entry.target;
-                        if (video.getAttribute('preload') === 'none') {
-                            video.setAttribute('preload', 'metadata');
-                            video.load();
-                        }
-                    }
-                });
-            }, observerOptions);
-
-            // Observe all videos with lazy loading
-            document.querySelectorAll('video[preload="none"]').forEach(video => {
-                videoObserver.observe(video);
-            });
-        });
-    </script>
-
-</body>
-</html>
-
