@@ -97,7 +97,6 @@
         }
         #home-page {
             display: block;
-            padding-top: 0;
         }
         .placeholder-image {
             width: 100%;
@@ -160,42 +159,6 @@
             object-fit: cover;
             border: 3px solid #f59e0b;
         }
-        /* Background video hero section styles */
-        .background-video-hero {
-            position: relative;
-            height: 100vh;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .background-video {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            transform: translateX(-50%) translateY(-50%);
-            z-index: 1;
-        }
-        .video-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.4);
-            z-index: 2;
-        }
-        .hero-content {
-            position: relative;
-            z-index: 3;
-            text-align: center;
-            color: white;
-            padding: 0 1rem;
-        }
     </style>
 </head>
 <body class="bg-white text-gray-800">
@@ -238,32 +201,39 @@
             </div>
         </section>
 
-        <!-- Background Video Hero Section with Text Overlay -->
-        <section class="background-video-hero">
-            <!-- Background Video -->
-            <video 
-                id="hero-video"
-                autoplay
-                muted 
-                loop 
-                playsinline 
-                preload="auto"
-                class="background-video"
-                poster="images/video-poster.jpg">
-                <!-- Multiple formats for better compatibility and smaller file sizes -->
-                <source src="videos/hero-video-compressed.webm" type="video/webm">
-                <source src="videos/hero-video-compressed.mp4" type="video/mp4">
-                <source src="videos/hero-video.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            
-            <!-- Video Overlay -->
-            <div class="video-overlay"></div>
-            
+        <!-- Hero Section with Text Only (no video) -->
+        <section class="relative py-20 bg-gradient-to-b from-gray-900 to-black overflow-hidden">
+            <!-- Overlay for Readability -->
+            <div class="absolute inset-0 bg-black opacity-50 z-5"></div>
+
             <!-- Hero Content -->
-            <div class="hero-content">
-                <h1 class="text-5xl md:text-7xl font-bold mb-6 text-yellow-300 drop-shadow-lg fade-in">LEVITICUS 6 : 13</h1>
-                <p class="text-xl md:text-3xl max-w-4xl mx-auto text-yellow-100 drop-shadow-md fade-in" style="animation-delay: 0.3s;">Join us at the Jalta Ruh Mission as we inspire one another to love God and do good.</p>
+            <div class="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-4">
+                <h1 class="text-5xl md:text-7xl font-bold mb-4 text-yellow-300 drop-shadow-lg fade-in">LEVITICUS 6 : 13</h1>
+                <p class="text-xl md:text-3xl max-w-3xl text-yellow-100 drop-shadow-md fade-in" style="animation-delay: 0.3s;">Join us at the Jalta Ruh Mission as we inspire one another to love God and do good.</p>
+            </div>
+        </section>
+
+        <!-- Bottom Video Section (previously top video) -->
+        <section class="py-16 bg-white">
+            <div class="container mx-auto px-4">
+                <div class="flex justify-center">
+                    <!-- Background Video with Optimization -->
+                    <video 
+                        id="hero-video"
+                        autoplay
+                        muted 
+                        loop 
+                        playsinline 
+                        preload="auto"
+                        class="w-full max-w-4xl h-auto rounded-lg shadow-lg hero-video opacity-1 border-2 border-transparent hover-scale"
+                        poster="images/video-poster.jpg">
+                        <!-- Multiple formats for better compatibility and smaller file sizes -->
+                        <source src="videos/hero-video-compressed.webm" type="video/webm">
+                        <source src="videos/hero-video-compressed.mp4" type="video/mp4">
+                        <source src="videos/hero-video.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
             </div>
         </section>
 
@@ -565,7 +535,7 @@
                                     </li>
                                     <li class="flex justify-between">
                                         <span>Youth Group</span>
-                                        <span>Fri 7:00 PM</span>
+                                        <span>Fri 极客时间 7:00 PM</span>
                                     </li>
                                 </ul>
                             </div>
@@ -589,14 +559,14 @@
                 
                 <!-- Contact Content -->
                 <div class="max-w-4xl mx-auto">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
+                    <div class="grid grid极客时间cols-1 md:grid-cols-2 gap-12 mb-12">
                         <div>
                             <h3 class="text-2xl font-bold mb-6 text-gray-800">Get In Touch</h3>
                             <div class="space-y-6">
                                 <div class="flex items-start">
                                     <div class="bg-yellow-100 p-3 rounded-full mr-4">
                                         <svg class="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0极客时间4.244-4.243a8 8 0 1111.314 0z"></path>
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
                                         </svg>
                                     </div>
@@ -613,13 +583,13 @@
                                     </div>
                                     <div>
                                         <h4 class="font-bold text-lg text-gray-800">Phone</h4>
-                                        <p class="text-gray-700">0210 427 487</p>
+                                        <极客时间 class="text-gray-700">0210 427 487</p>
                                     </div>
                                 </div>
                                 <div class="flex items-start">
                                     <div class="bg-yellow-100 p-3 rounded-full mr-4">
                                         <svg class="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19极客时间14a2 2 0 002-2V极客时间a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                                         </svg>
                                     </div>
                                     <div>
@@ -635,7 +605,7 @@
                                     </div>
                                     <div>
                                         <h4 class="font-bold text-lg text-gray-800">Office Hours</h4>
-                                        <p class="text-gray-700">Monday - Friday: 9:00 AM - 4:00 PM</p>
+                                        <p class="text-gray-700">Monday - Friday: 9:00 AM - 4:00 PM</极客时间>
                                     </div>
                                 </div>
                             </div>
@@ -657,7 +627,7 @@
                                 </div>
                                 <div>
                                     <label for="message" class="block text-gray-700 font-medium mb-2">Message</label>
-                                    <textarea id="message" rows="5" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500"></textarea>
+                                    <textarea id="message" rows="5" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:极客时间-2 focus:ring-yellow-500"></textarea>
                                 </div>
                                 <button type="submit" class="w-full bg-yellow-500 text-white font-bold py-3 px-4 rounded-lg hover:bg-yellow-600 transition duration-300">Send Message</button>
                             </form>
@@ -665,7 +635,7 @@
                     </div>
                     
                     <div class="bg-gray-50 p-8 rounded-lg">
-                        <h3 class="text-2xl font-bold mb-6 text-center text-gray-800">Visit Us</h3>
+                        <h3 class="text-2xl font-bold mb-6 text-center text-gray-800">Visit Us</极客时间>
                         <div class="aspect-w-16 aspect-h-9 bg-gray-200 rounded-lg flex items-center justify-center text-gray-500">
                             <span>Map Location Placeholder</span>
                         </div>
@@ -710,7 +680,7 @@
             window.scrollTo(0, 0);
         }
 
-        // Video optimization and loading management for the background video
+        // Video optimization and loading management for the bottom video
         document.addEventListener('DOMContentLoaded', function() {
             const heroVideo = document.getElementById('hero-video');
             let userInteracted = false;
