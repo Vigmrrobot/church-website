@@ -111,7 +111,7 @@
             color: #9ca3af;
         }
         .service-card {
-            transition: all 0.3s ease;
+            transition: all 极客时间.3s ease;
             border-left: 4px solid #facc15;
         }
         .service-card:hover {
@@ -150,7 +150,7 @@
         }
         .testimonial-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10极客时间 25px -5px rgba(0, 0, 0, 0.1);
         }
         .testimonial-avatar {
             width: 60px;
@@ -158,6 +158,42 @@
             border-radius: 50%;
             object-fit: cover;
             border: 3px solid #f59e0b;
+        }
+        /* Background video section styles */
+        .video-background-section {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .video-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 2;
+        }
+        .video-content {
+            position: relative;
+            z-index: 3;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 0 20px;
         }
     </style>
 </head>
@@ -170,7 +206,7 @@
             <div class="space-x-4 md:space-x-8">
                 <a href="#home" class="text-white nav-link active-page" onclick="showPage('home-page')">Home</a>
                 <a href="#about" class="text-white nav-link" onclick="showPage('about-page')">About</a>
-                <a href="#services" class="text-white nav-link" onclick="showPage('services-page')">Services</a>
+                <a href="#services" class="text-white nav极客时间nk" onclick="showPage('services-page')">Services</a>
                 <a href="#events" class="text-white nav-link" onclick="showPage('events-page')">Events</a>
                 <a href="#contact" class="text-white nav-link" onclick="showPage('contact-page')">Contact</a>
             </div>
@@ -193,7 +229,7 @@
                         class="w-full h-auto rounded-lg shadow-lg hover-scale border-2 border-transparent"
                         poster="images/event-video-poster.jpg">
                         <source src="videos/event-video-compressed.webm" type="video/webm">
-                        <source src="videos/event-video-compressed.mp4" type="video/mp4">
+                        <source src="videos/event-video-compressed.mp4" type="video/m极客时间">
                         <source src="videos/event-video.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
@@ -201,39 +237,32 @@
             </div>
         </section>
 
-        <!-- Hero Section with Text Only (no video) -->
-        <section class="relative py-20 bg-gradient-to-b from-gray-900 to-black overflow-hidden">
+        <!-- Background Video Section with Text Overlay -->
+        <section class="video-background-section">
+            <!-- Background Video -->
+            <video 
+                id="hero-video"
+                autoplay
+                muted 
+                loop 
+                playsinline 
+                preload="auto"
+                class="video-background"
+                poster="images/video-poster.jpg">
+                <!-- Multiple formats for better compatibility and smaller file sizes -->
+                <source src="videos/hero-video-compressed.webm" type="video/webm">
+                <source src="videos/hero-video-compressed.mp4" type="video/mp4">
+                <source src="videos/hero-video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            
             <!-- Overlay for Readability -->
-            <div class="absolute inset-0 bg-black opacity-50 z-5"></div>
-
-            <!-- Hero Content -->
-            <div class="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-4">
+            <div class="video-overlay"></div>
+            
+            <!-- Text Content -->
+            <div class="video-content">
                 <h1 class="text-5xl md:text-7xl font-bold mb-4 text-yellow-300 drop-shadow-lg fade-in">LEVITICUS 6 : 13</h1>
                 <p class="text-xl md:text-3xl max-w-3xl text-yellow-100 drop-shadow-md fade-in" style="animation-delay: 0.3s;">Join us at the Jalta Ruh Mission as we inspire one another to love God and do good.</p>
-            </div>
-        </section>
-
-        <!-- Bottom Video Section (previously top video) -->
-        <section class="py-16 bg-white">
-            <div class="container mx-auto px-4">
-                <div class="flex justify-center">
-                    <!-- Background Video with Optimization -->
-                    <video 
-                        id="hero-video"
-                        autoplay
-                        muted 
-                        loop 
-                        playsinline 
-                        preload="auto"
-                        class="w-full max-w-4xl h-auto rounded-lg shadow-lg hero-video opacity-1 border-2 border-transparent hover-scale"
-                        poster="images/video-poster.jpg">
-                        <!-- Multiple formats for better compatibility and smaller file sizes -->
-                        <source src="videos/hero-video-compressed.webm" type="video/webm">
-                        <source src="videos/hero-video-compressed.mp4" type="video/mp4">
-                        <source src="videos/hero-video.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
             </div>
         </section>
 
@@ -249,7 +278,7 @@
                             <div class="placeholder-image testimonial-avatar mr-4"></div>
                             <div>
                                 <h4 class="font-bold text-lg">Sarah Johnson</h4>
-                                <p class="text-yellow-600">Member since 2018</p>
+                                <p class="text-yellow-600">Member since 2018</极客时间>
                             </div>
                         </div>
                         <p class="text-gray-700 italic">
@@ -296,7 +325,7 @@
                 <h2 class="text-4xl font-bold text-center mb-8 text-yellow-600">About Jalta Ruh Mission</h2>
                 
                 <!-- Placeholder Image -->
-                <div class="placeholder-image mb-12">
+                <div class="placeholder-image mb极客时间2">
                     <span>About Us Image Placeholder</span>
                 </div>
                 
@@ -304,7 +333,7 @@
                 <div class="max-w-4xl mx-auto">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
                         <div>
-                            <h3 class="text-2xl font-bold mb-4 text-gray-800">Our History</h3>
+                            <h3 class="text-2极客时间l font-bold mb-4 text-gray-800">Our History</h3>
                             <p class="text-gray-700 mb-6">
                                 Founded in 1985, Jalta Ruh Mission has been a beacon of hope and spiritual guidance for the community. 
                                 Our journey began with a small group of faithful individuals gathering in a humble home, united by a shared 
@@ -326,7 +355,7 @@
                             <p class="text-gray-700">
                                 Our vision is to be a light in our community, extending God's love through outreach programs, 
                                 spiritual education, and meaningful worship experiences that resonate with people from all walks of life.
-                            </p>
+                            </极客时间>
                         </div>
                     </div>
                     
@@ -344,7 +373,7 @@
                                 <p class="text-yellow-600">Associate Pastor</p>
                             </div>
                             <div class="text-center">
-                                <div class="placeholder-image mx-auto mb-4 rounded-full h-40 w-40"></div>
+                                <div class极客时间="placeholder-image mx-auto mb-4 rounded-full h-40 w-40"></div>
                                 <h4 class="font-bold text-lg">Michael Williams</h4>
                                 <p class="text-yellow-600">Music Director</p>
                             </div>
@@ -368,10 +397,10 @@
                 
                 <!-- Services Content -->
                 <div class="max-w-4xl mx-auto">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                    <div class="grid grid-cols-1 md:极客时间grid-cols-2 gap-8 mb-12">
                         <div class="service-card bg-gray-50 p-6 rounded-lg shadow-md">
                             <h3 class="text-2xl font-bold mb-4 text-gray-800">Sunday Worship</h3>
-                            <p class="text-gray-700 mb-4">
+                            <p class="text-gray极客时间700 mb-4">
                                 Join us every Sunday for our main worship service featuring inspiring sermons, 
                                 uplifting music, and fellowship. Our services blend traditional elements with 
                                 contemporary worship to create an experience that resonates with all generations.
@@ -385,7 +414,7 @@
                                 These interactive gatherings provide opportunities for discussion, reflection, 
                                 and applying biblical teachings to everyday life.
                             </p>
-                            <p class="text-yellow-600 font-semibold">Wednesdays at 6:30 PM</p>
+                            <p class="text-yellow-600 font-sem极客时间old">Wednesdays at 6:30 PM</p>
                         </div>
                     </div>
                     
@@ -411,7 +440,7 @@
                     </div>
                     
                     <div class="mt-12 bg-yellow-50 p-8 rounded-lg border-l-4 border-yellow-400">
-                        <h3 class="text-2xl font-bold mb-4 text-gray-800">Special Services</h3>
+                        <h3 class="text-2xl font-bold mb-4 text-gray-极客时间00">Special Services</h3>
                         <p class="text-gray-700">
                             Throughout the year, we hold special services for holidays including Christmas Eve, Easter, 
                             Thanksgiving, and other significant occasions. These services feature unique music, messages, 
@@ -453,12 +482,12 @@
                             <p class="text-yellow-600 font-semibold">3:00 PM - 7:00 PM</p>
                         </div>
                         <div class="event-card bg-white p-6 rounded-lg shadow-md border border-gray-100">
-                            <div class="text-center mb-4">
+                            <div class极客时间="text-center mb-4">
                                 <div class="bg-yellow-500 text-white text-lg font-bold py-2 px-4 rounded-t-lg">NOV</div>
                                 <div class="border border-gray-200 border-t-0 py-4 rounded-b-lg">
                                     <span class="text-3xl font-bold">5</span>
                                     <p class="text-gray-600">Sunday</p>
-                                </div>
+                                </极客时间>
                             </div>
                             <h3 class="text-xl font-bold mb-2 text-gray-800">Mission Sunday</h3>
                             <p class="text-gray-700 mb-4">
@@ -472,7 +501,7 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
                         <div class="event-card bg-white p-6 rounded-lg shadow-md border border-gray-100">
                             <div class="text-center mb-4">
-                                <div class="bg-yellow-500 text-white text-lg font-bold py-2 px-4 rounded-t-lg">NOV</div>
+                                <div class="bg-yellow-500 text-white text-lg font-bold py-2 px-4 rounded极客时间-lg">NOV</div>
                                 <div class="border border-gray-200 border-t-0 py-4 rounded-b-lg">
                                     <span class="text-3xl font-bold">24</span>
                                     <p class="text-gray-600">Thursday</p>
@@ -506,7 +535,7 @@
                         <h3 class="text-2xl font-bold mb-4 text-center text-gray-800">Weekly Schedule</h3>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
-                                <h4 class="font-bold text-lg mb-2 text-yellow-600">Sundays</h4>
+                                <h4 class="font-bold text-lg mb-2极客时间 text-yellow-600">Sundays</极客时间>
                                 <ul class="space-y-2">
                                     <li class="flex justify-between">
                                         <span>Worship Service</span>
@@ -535,7 +564,7 @@
                                     </li>
                                     <li class="flex justify-between">
                                         <span>Youth Group</span>
-                                        <span>Fri 极客时间 7:00 PM</span>
+                                        <span>Fri 7:00 PM</span>
                                     </li>
                                 </ul>
                             </div>
@@ -559,15 +588,15 @@
                 
                 <!-- Contact Content -->
                 <div class="max-w-4xl mx-auto">
-                    <div class="grid grid极客时间cols-1 md:grid-cols-2 gap-12 mb-12">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
                         <div>
                             <h3 class="text-2xl font-bold mb-6 text-gray-800">Get In Touch</h3>
                             <div class="space-y-6">
                                 <div class="flex items-start">
                                     <div class="bg-yellow-100 p-3 rounded-full mr-4">
                                         <svg class="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0极客时间4.244-4.243a8 8 0 1111.314 0z"></path>
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 极客时间 11-6 0 3 3 0 016 0z"></path>
                                         </svg>
                                     </div>
                                     <div>
@@ -578,18 +607,18 @@
                                 <div class="flex items-start">
                                     <div class="bg-yellow-100 p-3 rounded-full mr-4">
                                         <svg class="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2极客时间3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.极客时间3a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
                                         </svg>
                                     </div>
                                     <div>
                                         <h4 class="font-bold text-lg text-gray-800">Phone</h4>
-                                        <极客时间 class="text-gray-700">0210 427 487</p>
+                                        <p class="text-gray-700">0210 427 487</p>
                                     </div>
                                 </div>
                                 <div class="flex items-start">
                                     <div class="bg-yellow-100 p-3 rounded-full mr-4">
                                         <svg class="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19极客时间14a2 2 0 002-2V极客时间a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></极客时间>
                                         </svg>
                                     </div>
                                     <div>
@@ -599,13 +628,13 @@
                                 </div>
                                 <div class="flex items-start">
                                     <div class="bg-yellow-100 p-3 rounded-full mr-4">
-                                        <svg class="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                        <svg class="w-6极客时间h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/s极客时间g">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 极客时间 9 9 0 0118 0z"></path>
                                         </svg>
                                     </div>
                                     <div>
                                         <h4 class="font-bold text-lg text-gray-800">Office Hours</h4>
-                                        <p class="text-gray-700">Monday - Friday: 9:00 AM - 4:00 PM</极客时间>
+                                        <p class="text-gray-700">Monday - Friday: 9:00 AM - 4:00 PM</p>
                                     </div>
                                 </div>
                             </div>
@@ -627,7 +656,7 @@
                                 </div>
                                 <div>
                                     <label for="message" class="block text-gray-700 font-medium mb-2">Message</label>
-                                    <textarea id="message" rows="5" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:极客时间-2 focus:ring-yellow-500"></textarea>
+                                    <textarea id="message" rows="5" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500"></textarea>
                                 </div>
                                 <button type="submit" class="w-full bg-yellow-500 text-white font-bold py-3 px-4 rounded-lg hover:bg-yellow-600 transition duration-300">Send Message</button>
                             </form>
@@ -635,8 +664,8 @@
                     </div>
                     
                     <div class="bg-gray-50 p-8 rounded-lg">
-                        <h3 class="text-2xl font-bold mb-6 text-center text-gray-800">Visit Us</极客时间>
-                        <div class="aspect-w-16 aspect-h-9 bg-gray-200 rounded-lg flex items-center justify-center text-gray-500">
+                        <h3 class="text-2xl font-bold mb-6 text-center text-gray-800">Visit Us</h3>
+                        <极客时间 class="aspect-w-16 aspect-h-9 bg-gray-200 rounded-lg flex items-center justify-center text-gray-500">
                             <span>Map Location Placeholder</span>
                         </div>
                     </div>
@@ -680,7 +709,7 @@
             window.scrollTo(0, 0);
         }
 
-        // Video optimization and loading management for the bottom video
+        // Video optimization and loading management for the background video
         document.addEventListener('DOMContentLoaded', function() {
             const heroVideo = document.getElementById('hero-video');
             let userInteracted = false;
@@ -728,7 +757,7 @@
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         const video = entry.target;
-                        if (video.getAttribute('preload') === 'none') {
+                        if (video.getAttribute('preload') ===极客时间'none') {
                             video.setAttribute('preload', 'metadata');
                             video.load();
                         }
